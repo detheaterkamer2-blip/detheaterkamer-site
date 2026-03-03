@@ -179,12 +179,12 @@
 <style>
   /* === RESET === */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: hidden; }
   body {
     font-family: 'Poppins', 'Helvetica', Arial, sans-serif;
     color: #333; line-height: 1.6;
     background: #faf8f5;
-    margin: 0;
+    margin: 0; overflow-x: hidden;
   }
   h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
   a { color: #cb0c2a; text-decoration: none; }
@@ -199,7 +199,7 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
   .header-inner {
-    max-width: 1600px; margin: 0 auto;
+    max-width: 1400px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
     padding: 16px 24px;
   }
@@ -237,6 +237,8 @@
 
   /* ============ HERO ============ */
   .tk-hero {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
     background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)),
                 url('https://www.detheaterkamer.nl/wp-content/uploads/2021/01/flyer.acteren2.01.jpg');
     background-size: cover; background-position: center;
@@ -272,6 +274,8 @@
 
   /* ============ QUOTE ============ */
   .tk-quote {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
     text-align: center; padding: 20px 20px; background: #efebe6;
   }
   .tk-quote p { font-style: italic; font-size: 1.1rem; color: #666699; }
@@ -279,13 +283,13 @@
 
   /* ============ PAGE LAYOUT (main + sidebar) ============ */
   .page-layout {
-    max-width: 1600px; margin: 0 auto; padding: 24px 24px;
+    max-width: 1400px; margin: 0 auto; padding: 24px 24px;
     display: grid; grid-template-columns: 1fr 300px; gap: 36px;
     align-items: start;
   }
 
   /* ============ SIDEBAR ============ */
-  .sidebar { position: sticky; top: 145px; }
+  .sidebar { position: sticky; top: 180px; }
   .sidebar-block {
     background: #fff; border-radius: 10px; padding: 20px;
     margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
@@ -372,8 +376,8 @@
   }
   .tk-c.ex:hover { transform: none; }
 
-  .tk-ci { position: relative; height: 280px; overflow: hidden; cursor: pointer; }
-  .tk-c.ex .tk-ci { height: 360px; }
+  .tk-ci { position: relative; height: 200px; overflow: hidden; cursor: pointer; }
+  .tk-c.ex .tk-ci { height: 280px; }
   .tk-ci img {
     width: 100%; height: 100%; object-fit: cover;
     transition: transform 0.6s ease;
@@ -548,7 +552,7 @@
     background: #2c3e50; color: #fff; margin-top: 40px; padding: 40px 20px 20px;
   }
   .footer-inner {
-    max-width: 1600px; margin: 0 auto;
+    max-width: 1400px; margin: 0 auto;
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;
   }
   .footer-col h4 {
@@ -569,7 +573,7 @@
   .footer-btn-alt { background: #cb0c2a; color: #fff; }
   .footer-btn-alt:hover { background: #a30a22; color: #fff; }
   .footer-bottom {
-    max-width: 1600px; margin: 24px auto 0; padding-top: 16px;
+    max-width: 1400px; margin: 24px auto 0; padding-top: 16px;
     border-top: 1px solid rgba(255,255,255,0.15);
     text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.4);
   }
@@ -621,8 +625,8 @@
     .tk-fbs { gap: 6px; }
     .tk-fb { padding: 6px 12px; font-size: 0.82rem; }
 
-    .tk-ci { height: 240px; }
-    .tk-c.ex .tk-ci { height: 280px; }
+    .tk-ci { height: 180px; }
+    .tk-c.ex .tk-ci { height: 240px; }
     .tk-ci-overlay { padding: 50px 18px 18px; }
     .tk-ci-overlay h3 { font-size: 1.3rem; }
     .tk-cb { padding: 18px 16px; }
@@ -645,7 +649,7 @@
   @media (max-width: 400px) {
     .tk-hero { padding: 40px 12px 35px; }
     .tk-hero h1 { font-size: 1.45rem; }
-    .tk-ci { height: 200px; }
+    .tk-ci { height: 160px; }
     .tk-ci-overlay h3 { font-size: 1.15rem; }
     .tk-cb { padding: 14px 14px; }
     .tk-meer, .tk-sluit { padding: 12px 14px; font-size: 0.88rem; }
@@ -850,4 +854,3 @@
 
 </body>
 </html>
-
