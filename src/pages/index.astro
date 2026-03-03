@@ -1,1 +1,853 @@
+---
+// De Theaterkamer — Homepage (volledige migratie)
+// Header + navigatie, cursuskaarten, zijbalk, fotogalerij, footer
+// Cursussen worden client-side geladen uit de Railway API
+---
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="De Theaterkamer Amsterdam biedt inspirerende theatercursussen voor volwassenen. Improvisatie, acteren, cabaret en meer." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="De Theaterkamer Amsterdam | Toneelcursussen voor volwassenen" />
+  <meta property="og:description" content="Inspirerende en uitdagende theatercursussen voor volwassenen die hun creatieve potentieel willen ontdekken" />
+  <meta property="og:url" content="https://www.detheaterkamer.nl/" />
+  <meta property="og:locale" content="nl_NL" />
+  <meta property="og:site_name" content="De Theaterkamer Amsterdam" />
+
+  <link rel="canonical" href="https://www.detheaterkamer.nl/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <title>De Theaterkamer Amsterdam | Toneelcursussen, presentatietrainingen en bedrijfsworkshops</title>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">
+      <img src="https://www.detheaterkamer.nl/wp-content/uploads/2021/01/logo.dtk_.tekst_.jpg" alt="De Theaterkamer Amsterdam - acteercursussen" />
+    </a>
+    <button class="nav-toggle" aria-label="Menu openen" onclick="document.querySelector('.main-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item active"><a href="/">Home</a></li>
+        <li class="nav-item has-sub">
+          <a href="/docenten/">Docenten</a>
+        </li>
+        <li class="nav-item has-sub">
+          <a href="/wat-is-de-theaterkamer/">Wat is De Theaterkamer?</a>
+          <ul class="sub-nav">
+            <li><a href="/vraag-en-antwoord/">Vraag en Antwoord</a></li>
+            <li><a href="/waarom-de-theaterkamer/">Waarom De Theaterkamer?</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="/contactpagina-dtk/">Contact & Mailinglijst</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO (full-width) ============ -->
+<div class="tk-hero" id="tkHero">
+  <div class="tk-hero-label" id="tkHeroLabel">De Theaterkamer Amsterdam</div>
+  <h1 id="tkHeroTitel">Ontdek de kracht van toneelspelen</h1>
+  <p id="tkHeroSub">Inspirerende en uitdagende theatercursussen voor volwassenen die hun creatieve potentieel willen ontdekken</p>
+  <a href="#cursussen" class="tk-hero-cta">Bekijk onze cursussen</a>
+</div>
+
+<!-- ============ QUOTE (full-width) ============ -->
+<div class="tk-quote">
+  <p id="tkQuote">"All the world's a stage and men and women are merely players"</p>
+  <cite id="tkCite">— William Shakespeare</cite>
+</div>
+
+<!-- ============ MAIN + SIDEBAR LAYOUT ============ -->
+<div class="page-layout">
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="cursussen">
+
+    <!-- SECTIE TITEL -->
+    <div class="tk-section-title">
+      <h2 id="tkSecTitel">Onze toneelcursussen voor volwassenen</h2>
+      <div class="tk-title-bar"></div>
+    </div>
+
+    <!-- FILTERS + GRID -->
+    <div class="tk-filters" id="tkF"></div>
+    <div class="tk-rc" id="tkRC"></div>
+    <div class="tk-grid" id="tkG"></div>
+
+    <!-- NOG TE PLANNEN -->
+    <div id="tkPlanG" class="tk-plan-section"></div>
+
+    <!-- THEATERKAMER IN BEELD -->
+    <div class="tk-gallery-section">
+      <div class="tk-section-title">
+        <h2>Theaterkamer in Beeld</h2>
+        <div class="tk-title-bar"></div>
+      </div>
+      <p class="tk-gallery-sub">Bekijk hier een impressie van onze cursussen en voorstellingen</p>
+      <div class="tk-gallery">
+        <img src="https://www.detheaterkamer.nl/wp-content/uploads/2025/12/5-e1766329323332.jpg" alt="Theaterimpressie" loading="lazy" />
+        <img src="https://www.detheaterkamer.nl/wp-content/uploads/2025/12/3peronages.jpg" alt="Theaterimpressie" loading="lazy" />
+        <img src="https://www.detheaterkamer.nl/wp-content/uploads/2025/12/metregisseur.vastert.jpg" alt="Theaterimpressie" loading="lazy" />
+        <img src="https://www.detheaterkamer.nl/wp-content/uploads/2021/01/flyer.acteren2.01.jpg" alt="Theaterimpressie" loading="lazy" />
+        <img src="https://www.detheaterkamer.nl/wp-content/uploads/2021/06/1010_64931-300x200-1.jpg" alt="Theaterimpressie" loading="lazy" />
+        <img src="https://www.detheaterkamer.nl/wp-content/uploads/2021/06/8577513224_97e540c220_b-e1624527276921.jpg" alt="Theaterimpressie" loading="lazy" />
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-block sb-mailing">
+      <h4>Ja, zet mij op de mailinglijst en mail mij nieuwe data van cursussen</h4>
+      <a href="https://laposta.nl/f/sskcvxzdyd9e" target="_blank" rel="noopener" class="sb-btn sb-btn-mail">✉ Mail me nieuwe data van de theatercursussen</a>
+    </div>
+
+    <div class="sidebar-block sb-inschrijf">
+      <h4>Ik wil me inschrijven</h4>
+      <a href="https://www.formdesk.com/detheaterkamer/Inschrijven_De_Theaterkamer" target="_blank" rel="noopener" class="sb-btn sb-btn-inschrijf">Ja, ik wil me inschrijven</a>
+    </div>
+
+    <div class="sidebar-block sb-portret">
+      <h4>Oprichter en docent Gertjan ten Thije</h4>
+      <img src="https://www.detheaterkamer.nl/wp-content/uploads/2021/02/Portret-Gertjan-e1408648880199.jpg" alt="Gertjan ten Thije - oprichter De Theaterkamer" />
+    </div>
+
+    <div class="sidebar-block sb-waarom">
+      <h4>Waarom De Theaterkamer?</h4>
+      <ul>
+        <li>Divers aanbod van wel 8 verschillende theatercursussen per week voor alle niveau's en leeftijden</li>
+        <li>Kleinschalig en persoonlijk, met oog voor jouw mogelijkheden</li>
+        <li>Les in onze eigen theaters: <a href="http://www.amsterdamstheaterhuis.nl" target="_blank" rel="noopener">Het Amsterdams Theaterhuis</a> en <a href="http://www.decameleon.nl" target="_blank" rel="noopener">Theater De Cameleon</a></li>
+        <li>Les van zeer bevlogen, professionele en ervaren theaterdocenten</li>
+        <li>Hechte groepen, je maakt veel nieuwe vrienden</li>
+        <li>Proeflessen mogelijk</li>
+      </ul>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>De Theaterkamer</h4>
+      <p>Inspirerende en uitdagende theatercursussen voor volwassenen die willen groeien in acteren, presenteren en persoonlijke ontwikkeling.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Waarom Ons Kiezen</h4>
+      <ul>
+        <li>✦ Divers aanbod van 8+ theatercursussen voor alle niveau's</li>
+        <li>✦ Kleinschalig en persoonlijk</li>
+        <li>✦ Les in eigen theaters</li>
+        <li>✦ Professionele theaterdocenten</li>
+        <li>✦ Hechte groepen en nieuwe vriendschappen</li>
+        <li>✦ Proeflessen beschikbaar</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Locaties in Amsterdam<br><a href="/contactpagina-dtk/">Zie Contactpagina</a><br><a href="mailto:info@detheaterkamer.nl">info@detheaterkamer.nl</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Doe Mee!</h4>
+      <p>Ontdek jouw toneeltalent en blijf op de hoogte van nieuwe cursussen.</p>
+      <a href="https://laposta.nl/f/sskcvxzdyd9e" target="_blank" rel="noopener" class="footer-btn">Nieuwsbrief</a>
+      <a href="https://www.formdesk.com/detheaterkamer/Inschrijven_De_Theaterkamer" target="_blank" rel="noopener" class="footer-btn footer-btn-alt">Inschrijven</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="footerYear">2025</span> De Theaterkamer Amsterdam</p>
+  </div>
+</footer>
+
+<style>
+  /* === RESET === */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  body {
+    font-family: 'Poppins', 'Helvetica', Arial, sans-serif;
+    color: #333; line-height: 1.6;
+    background: #faf8f5;
+    margin: 0;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
+  a { color: #cb0c2a; text-decoration: none; }
+  a:hover { color: #8b3a5c; }
+  img { max-width: 100%; height: auto; }
+
+  /* ============ HEADER ============ */
+  .site-header {
+    background: #fff;
+    border-bottom: 3px solid #e7c654;
+    position: sticky; top: 0; z-index: 200;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .header-inner {
+    max-width: 1600px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px;
+  }
+  .header-logo img { height: 130px; width: auto; }
+  .main-nav .nav-list {
+    display: flex; gap: 6px; list-style: none; align-items: center;
+  }
+  .nav-item a {
+    display: block; padding: 12px 20px; color: #2c3e50;
+    font-size: 1.05rem; font-weight: 500; border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .nav-item a:hover, .nav-item.active a {
+    background: #f4f1ee; color: #8b3a5c;
+  }
+  .nav-item.has-sub { position: relative; }
+  .sub-nav {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: #fff; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    min-width: 240px; padding: 8px 0; list-style: none; z-index: 300;
+  }
+  .nav-item.has-sub:hover .sub-nav { display: block; }
+  .sub-nav li a {
+    padding: 10px 20px; font-size: 0.95rem; display: block;
+    color: #555; border-radius: 0;
+  }
+  .sub-nav li a:hover { background: #f4f1ee; color: #8b3a5c; }
+  .nav-toggle {
+    display: none; background: none; border: none; cursor: pointer; padding: 8px;
+  }
+  .nav-toggle span {
+    display: block; width: 26px; height: 2px; background: #2c3e50;
+    margin: 6px 0; transition: 0.3s ease;
+  }
+
+  /* ============ HERO ============ */
+  .tk-hero {
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)),
+                url('https://www.detheaterkamer.nl/wp-content/uploads/2021/01/flyer.acteren2.01.jpg');
+    background-size: cover; background-position: center;
+    padding: 80px 30px 70px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .tk-hero::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 6px;
+    background: linear-gradient(90deg, #8b3a5c, #4a148c, #2c3e50);
+  }
+  .tk-hero-label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px;
+    color: #e7c654; margin-bottom: 14px; font-weight: 600;
+  }
+  .tk-hero h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; color: #fff;
+    line-height: 1.15; margin-bottom: 14px;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .tk-hero p {
+    color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.6;
+    max-width: 620px; margin: 0 auto 24px;
+  }
+  .tk-hero-cta {
+    display: inline-block; background: #cb0c2a; color: #fff;
+    padding: 14px 36px; border-radius: 8px; font-weight: 600;
+    font-size: 1rem; transition: all 0.3s ease;
+  }
+  .tk-hero-cta:hover {
+    background: #a30a22; color: #fff; transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+
+  /* ============ QUOTE ============ */
+  .tk-quote {
+    text-align: center; padding: 20px 20px; background: #efebe6;
+  }
+  .tk-quote p { font-style: italic; font-size: 1.1rem; color: #666699; }
+  .tk-quote cite { display: block; font-size: 0.85rem; margin-top: 4px; font-style: normal; color: #aaa; }
+
+  /* ============ PAGE LAYOUT (main + sidebar) ============ */
+  .page-layout {
+    max-width: 1600px; margin: 0 auto; padding: 24px 24px;
+    display: grid; grid-template-columns: 1fr 300px; gap: 36px;
+    align-items: start;
+  }
+
+  /* ============ SIDEBAR ============ */
+  .sidebar { position: sticky; top: 145px; }
+  .sidebar-block {
+    background: #fff; border-radius: 10px; padding: 20px;
+    margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e8e2da;
+  }
+  .sidebar-block h4 {
+    font-size: 1rem; color: #2c3e50; margin-bottom: 12px; line-height: 1.4;
+  }
+  .sb-btn {
+    display: block; text-align: center; padding: 12px 16px; border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem; transition: all 0.25s ease;
+  }
+  .sb-btn-mail {
+    background: #2c3e50; color: #fff;
+  }
+  .sb-btn-mail:hover { background: #1a252f; color: #fff; transform: translateY(-2px); }
+  .sb-btn-inschrijf {
+    background: #cb0c2a; color: #fff;
+  }
+  .sb-btn-inschrijf:hover { background: #a30a22; color: #fff; transform: translateY(-2px); }
+  .sb-portret img {
+    width: 100%; border-radius: 8px;
+  }
+  .sb-waarom ul {
+    list-style: none; padding: 0;
+  }
+  .sb-waarom li {
+    padding: 8px 0; border-bottom: 1px solid #f0ece6;
+    font-size: 0.88rem; line-height: 1.5; color: #555;
+  }
+  .sb-waarom li:last-child { border-bottom: none; }
+  .sb-waarom li a { font-weight: 500; }
+
+  /* ============ SECTIE TITEL ============ */
+  .tk-section-title { text-align: center; margin-bottom: 8px; }
+  .tk-section-title h2 {
+    font-size: 1.5rem; color: #2c3e50; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+  }
+  .tk-title-bar { width: 60px; height: 3px; background: #cb0c2a; margin: 0 auto 20px; border-radius: 2px; }
+
+  /* ============ FILTERS ============ */
+  .tk-filters {
+    background: #fff; border-radius: 10px; padding: 14px 18px;
+    margin-bottom: 14px; box-shadow: 0 1px 8px rgba(0,0,0,0.05); border: 1px solid #e8e2da;
+  }
+  .tk-fg { margin-bottom: 10px; }
+  .tk-fg:last-child { margin-bottom: 0; }
+  .tk-fl {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px;
+    color: #aaa; margin-bottom: 6px; font-weight: 600;
+  }
+  .tk-fbs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tk-fb {
+    padding: 7px 18px; border-radius: 4px; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; border: 2px solid #ddd; background: #fff; color: #666;
+    transition: all 0.15s ease; font-family: inherit;
+  }
+  .tk-fb.al { border-color: #2c3e50; background: #2c3e50; color: #fff; }
+  .tk-fb.an { border-color: #8b3a5c; background: #8b3a5c; color: #fff; }
+  .tk-fr {
+    padding: 6px 12px; border: none; background: transparent; color: #8b3a5c;
+    font-weight: 500; text-decoration: underline; cursor: pointer; font-size: 0.88rem; font-family: inherit;
+  }
+  .tk-rc { font-size: 0.9rem; color: #aaa; margin-bottom: 10px; padding-left: 4px; }
+
+  /* ============ GRID ============ */
+  .tk-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 24px; align-items: start;
+  }
+
+  /* ============ CARD ============ */
+  .tk-c {
+    background: #fff; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    scroll-margin-top: 145px;
+  }
+  .tk-c:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.15); }
+  .tk-c.ex {
+    grid-column: 1 / -1;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 0 0 2px rgba(139,58,92,0.2);
+  }
+  .tk-c.ex:hover { transform: none; }
+
+  .tk-ci { position: relative; height: 280px; overflow: hidden; cursor: pointer; }
+  .tk-c.ex .tk-ci { height: 360px; }
+  .tk-ci img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .tk-c:hover .tk-ci img { transform: scale(1.06); }
+  .tk-c.ex:hover .tk-ci img { transform: none; }
+  .tk-ci.vb img { filter: grayscale(50%) brightness(0.85); }
+
+  .tk-ci-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent 0%, rgba(0,0,0,0.8) 100%);
+    padding: 60px 24px 22px;
+  }
+  .tk-ci-overlay h3 {
+    color: #fff; font-size: 1.5rem; font-weight: 700; line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .tk-c.ex .tk-ci-overlay h3 { font-size: 1.8rem; }
+
+  .tk-nb {
+    position: absolute; top: 16px; right: 16px;
+    padding: 8px 16px; border-radius: 30px;
+    font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1px; color: #fff; z-index: 1;
+    font-family: 'Poppins', sans-serif;
+  }
+  .tk-nb-b { background: #2c3e50; }
+  .tk-nb-g { background: #cb0c2a; }
+
+  .tk-cb { padding: 24px 26px; }
+  .tk-cb p.tk-desc {
+    color: #555; font-size: 1.0rem; line-height: 1.6; margin-bottom: 16px;
+  }
+
+  .tk-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #f4f1ee; border: 1px solid #e8e2da; border-radius: 6px;
+    padding: 8px 14px; margin-bottom: 14px; font-size: 0.95rem;
+    color: #2c3e50; font-weight: 500;
+  }
+  .tk-chip-icon { color: #4a148c; font-size: 1.1rem; }
+
+  .tk-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.95rem; color: #777; margin-bottom: 14px; }
+  .tk-meta span { display: flex; align-items: center; gap: 6px; }
+  .tk-meta .tk-mi { font-size: 1rem; }
+  .tk-mi-time { color: #3498db; }
+  .tk-mi-date { color: #f0ad4e; }
+
+  .tk-st { font-weight: 600; font-size: 1.0rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .tk-st-g { color: #3cb371; }
+  .tk-st-w { color: #f0ad4e; }
+  .tk-st-r { color: #d9534f; }
+  .tk-st-d { color: #999; }
+
+  .tk-div { height: 1px; background: #e8e2da; margin: 4px 0 16px; }
+
+  .tk-meer {
+    display: block; width: 100%; text-align: center;
+    padding: 14px 20px; border-radius: 8px;
+    font-weight: 600; font-size: 1.0rem; letter-spacing: 0.5px;
+    cursor: pointer; border: 2px solid #8b3a5c; background: #fff;
+    color: #8b3a5c; transition: all 0.25s ease; font-family: inherit;
+  }
+  .tk-meer:hover { background: #8b3a5c; color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(139,58,92,0.25); }
+
+  .tk-sluit {
+    display: block; width: 100%; text-align: center;
+    padding: 14px 20px; border-radius: 8px;
+    font-weight: 600; font-size: 1.0rem; letter-spacing: 0.5px;
+    cursor: pointer; border: none; background: #8b3a5c;
+    color: #fff; transition: all 0.25s ease; font-family: inherit;
+  }
+  .tk-sluit:hover { background: #6b2a48; transform: translateY(-2px); }
+
+  /* ============ EXPANDED DETAIL ============ */
+  .tk-cd { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .tk-c.ex .tk-cd { max-height: 1600px; }
+  .tk-cdi { border-top: 4px solid #8b3a5c; }
+  .tk-dg { display: grid; grid-template-columns: 1fr 1fr; }
+  .tk-dl { padding: 32px 28px; border-right: 1px solid #e8e2da; }
+  .tk-dr { padding: 32px 28px; }
+
+  .tk-dh {
+    font-size: 1.3rem; color: #2c3e50; margin-bottom: 20px;
+    padding-bottom: 10px; border-bottom: 3px solid #8b3a5c; display: inline-block; font-weight: 700;
+  }
+  .tk-dt { color: #555; font-size: 1.1rem; line-height: 1.75; margin-bottom: 28px; }
+
+  .tk-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+  .tk-sl { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 3px; }
+  .tk-sv { font-size: 1.05rem; color: #333; }
+  .tk-sv.tk-pr { font-size: 1.4rem; color: #8b3a5c; font-weight: 700; }
+
+  .tk-doc { display: flex; gap: 20px; margin-bottom: 28px; }
+  .tk-doc-av {
+    width: 90px; height: 90px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+    background: #f4f1ee; display: flex; align-items: center; justify-content: center;
+    border: 3px solid #e8e2da; font-size: 2rem; color: #4a148c;
+  }
+  .tk-doc-av img { width: 100%; height: 100%; object-fit: cover; }
+  .tk-doc h4 { font-size: 1.25rem; color: #2c3e50; margin-bottom: 8px; }
+  .tk-doc p { color: #666; font-size: 1.05rem; line-height: 1.6; }
+
+  .tk-loc {
+    background: #f4f1ee; border-radius: 8px; padding: 20px; margin-bottom: 24px;
+    border-left: 4px solid #2c3e50;
+  }
+  .tk-loc-l { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 6px; }
+  .tk-loc-n { font-size: 1.1rem; font-weight: 600; color: #2c3e50; margin-bottom: 2px; }
+  .tk-loc-a { font-size: 0.95rem; color: #888; }
+
+  .tk-cta {
+    display: block; width: 100%; text-align: center;
+    padding: 18px 24px; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 1.05rem;
+    text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.3s ease; color: #fff; background: #2c3e50;
+  }
+  .tk-cta:hover { background: #cb0c2a; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); color: #fff; }
+  .tk-cta-dis { background: #e8e2da; color: #999; cursor: default; }
+  .tk-cta-dis:hover { background: #e8e2da; color: #999; transform: none; box-shadow: none; }
+
+  .tk-wl {
+    background: linear-gradient(135deg, #f0ad4e, #c49340); border-radius: 8px;
+    padding: 16px 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 12px;
+  }
+  .tk-wl-t { color: #fff; font-weight: 600; font-size: 1.0rem; }
+  .tk-wl-s { color: rgba(255,255,255,0.85); font-size: 0.9rem; }
+
+  .tk-empty { text-align: center; padding: 60px 20px; }
+  .tk-empty p { color: #999; font-size: 1.05rem; margin-bottom: 12px; }
+  .tk-empty button {
+    padding: 10px 24px; border-radius: 6px; border: 2px solid #8b3a5c;
+    background: #fff; color: #8b3a5c; font-size: 0.95rem; font-weight: 500;
+    cursor: pointer; font-family: inherit;
+  }
+
+  /* ============ NOG TE PLANNEN ============ */
+  .tk-plan-section { margin-top: 32px; }
+  .tk-plan-grid {
+    display: grid; grid-template-columns: 1fr; gap: 20px;
+  }
+  .tk-plan-card {
+    background: #fff; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08); border: 1px solid #e8e2da;
+    display: grid; grid-template-columns: 160px 1fr; align-items: stretch;
+  }
+  .tk-plan-card img { width: 100%; height: 100%; object-fit: cover; }
+  .tk-plan-body { padding: 18px 20px; }
+  .tk-plan-body h3 {
+    font-size: 1.1rem; color: #2c3e50; margin-bottom: 6px;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .tk-plan-body p { font-size: 0.88rem; color: #666; line-height: 1.5; margin-bottom: 8px; }
+  .tk-plan-meta { font-size: 0.82rem; color: #999; }
+
+  /* ============ GALLERY ============ */
+  .tk-gallery-section { margin-top: 40px; }
+  .tk-gallery-sub { text-align: center; color: #888; margin-bottom: 20px; font-size: 0.95rem; }
+  .tk-gallery {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  }
+  .tk-gallery img {
+    width: 100%; height: 180px; object-fit: cover;
+    border-radius: 8px; transition: transform 0.3s ease;
+  }
+  .tk-gallery img:hover { transform: scale(1.03); }
+
+  /* ============ FOOTER ============ */
+  .site-footer {
+    background: #2c3e50; color: #fff; margin-top: 40px; padding: 40px 20px 20px;
+  }
+  .footer-inner {
+    max-width: 1600px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;
+  }
+  .footer-col h4 {
+    color: #e7c654; font-size: 1rem; margin-bottom: 12px;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .footer-col p, .footer-col li, .footer-col a {
+    font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.7;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col a:hover { color: #e7c654; }
+  .footer-btn {
+    display: inline-block; margin-top: 10px; margin-right: 8px;
+    padding: 8px 18px; border-radius: 6px;
+    font-weight: 600; font-size: 0.85rem; background: #e7c654; color: #2c3e50;
+  }
+  .footer-btn:hover { background: #d4b445; color: #2c3e50; }
+  .footer-btn-alt { background: #cb0c2a; color: #fff; }
+  .footer-btn-alt:hover { background: #a30a22; color: #fff; }
+  .footer-bottom {
+    max-width: 1600px; margin: 24px auto 0; padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.4);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1100px) {
+    .tk-grid { grid-template-columns: 1fr; }
+    .tk-c.ex { grid-column: 1; }
+  }
+
+  @media (max-width: 900px) {
+    .page-layout {
+      grid-template-columns: 1fr; gap: 24px;
+    }
+    .tk-grid { grid-template-columns: repeat(2, 1fr); }
+    .tk-c.ex { grid-column: 1 / -1; }
+    .sidebar {
+      position: static;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .tk-gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .header-logo img { height: 70px; }
+    .main-nav {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: #fff; padding: 12px 20px;
+      border-bottom: 3px solid #e7c654; box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .main-nav.open { display: block; }
+    .main-nav .nav-list { flex-direction: column; gap: 0; }
+    .sub-nav { position: static; box-shadow: none; padding-left: 16px; display: block; }
+    .nav-toggle { display: block; }
+
+    .tk-hero { padding: 50px 16px 45px; }
+    .tk-hero-label { font-size: 0.65rem; letter-spacing: 3px; }
+    .tk-hero h1 { font-size: 1.7rem; }
+    .tk-hero p { font-size: 0.95rem; }
+    .tk-quote { padding: 16px 14px; }
+    .tk-quote p { font-size: 1rem; }
+
+    .page-layout { padding: 16px 10px; }
+    .tk-grid { grid-template-columns: 1fr; }
+    .tk-c.ex { grid-column: 1; }
+    .tk-section-title h2 { font-size: 1.2rem; }
+    .tk-filters { padding: 12px 14px; border-radius: 8px; }
+    .tk-fbs { gap: 6px; }
+    .tk-fb { padding: 6px 12px; font-size: 0.82rem; }
+
+    .tk-ci { height: 240px; }
+    .tk-c.ex .tk-ci { height: 280px; }
+    .tk-ci-overlay { padding: 50px 18px 18px; }
+    .tk-ci-overlay h3 { font-size: 1.3rem; }
+    .tk-cb { padding: 18px 16px; }
+    .tk-desc { font-size: 0.95rem !important; }
+    .tk-chip { font-size: 0.88rem; padding: 7px 12px; }
+    .tk-meta { gap: 10px; font-size: 0.88rem; flex-direction: column; }
+
+    .tk-dg { grid-template-columns: 1fr; }
+    .tk-dl { border-right: none; border-bottom: 1px solid #e8e2da; padding: 24px 18px; }
+    .tk-dr { padding: 24px 18px; }
+    .tk-specs { grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+
+    .sidebar { grid-template-columns: 1fr; }
+    .tk-gallery { grid-template-columns: 1fr 1fr; }
+    .tk-plan-card { grid-template-columns: 1fr; }
+    .tk-plan-card img { height: 160px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  @media (max-width: 400px) {
+    .tk-hero { padding: 40px 12px 35px; }
+    .tk-hero h1 { font-size: 1.45rem; }
+    .tk-ci { height: 200px; }
+    .tk-ci-overlay h3 { font-size: 1.15rem; }
+    .tk-cb { padding: 14px 14px; }
+    .tk-meer, .tk-sluit { padding: 12px 14px; font-size: 0.88rem; }
+    .tk-cta { padding: 14px 14px; font-size: 0.88rem; }
+    .tk-dl, .tk-dr { padding: 18px 14px; }
+    .tk-specs { grid-template-columns: 1fr; }
+    .tk-gallery { grid-template-columns: 1fr; }
+    .tk-gallery img { height: 200px; }
+  }
+</style>
+
+<script is:inline>
+(function() {
+  var API = "https://web-production-f9ffd.up.railway.app/api";
+
+  var FB = [
+    {cursus_id:"dvo-3-5",titel:"De Vloer Op 3.5",korte_beschrijving:"Verdiep je acteertechnieken en improvisatievaardigheden in deze theatercursus voor gevorderden.",lange_beschrijving:"In deze cursus De Vloer Op verdiep je de spel- en improvisatie technieken.",niveau:"Gevorderd",dag_tijd:"maandag 19.45 – 22.15 uur",start_datum:"19 januari 2026",eind_datum:"16 maart 2026",geen_les:"23 februari 2026",prijs:250,lessen_aantal:8,docent:"Vastert",docent_volledige_naam:"Vastert van Aardenne",docent_bio:"Vastert is een ervaren theaterdocent en acteur.",docent_foto_url:"https://www.detheaterkamer.nl/wp-content/uploads/2021/06/Vastert1.jpg",locatie:"Het Theaterhuis",locatie_volledig:"Het Amsterdams Theaterhuis",locatie_adres:"Derde Oosterparkstraat 20, Amsterdam",cursus_foto_url:"https://www.detheaterkamer.nl/wp-content/uploads/2025/12/10.jpg",beschikbaarheid:"Nog 2 plekken",beschikbaarheid_status:"beschikbaar",proefles:"Beperkt mogelijk",formdesk_url:"https://www.formdesk.com/detheaterkamer/Inschrijven_De_Theaterkamer",categorie:"actief",volgorde:1}
+  ];
+
+  var cs = [], planCs = [], exId = null, fN = 'alle', fL = 'alle';
+  var si = {beschikbaar:'●','bijna-vol':'◐',vol:'◷','vol-begonnen':'✕'};
+
+  function load() {
+    fetch(API + "/cursussen")
+      .then(function(r){return r.json();})
+      .then(function(d){splitCursussen(d);})
+      .catch(function(){splitCursussen(FB);});
+  }
+
+  function splitCursussen(d) {
+    cs = d.filter(function(c){return c.categorie==='actief';}).sort(function(a,b){return a.volgorde-b.volgorde;});
+    planCs = d.filter(function(c){return c.categorie==='gepland';}).sort(function(a,b){return a.volgorde-b.volgorde;});
+    render();
+    renderPlan();
+  }
+
+  function gf() {
+    return cs.filter(function(c){
+      if(fN!=='alle'&&c.niveau!==fN) return false;
+      if(fL!=='alle'&&c.locatie!==fL) return false;
+      return true;
+    });
+  }
+
+  function nc(n) {
+    var l=n.toLowerCase();
+    return (l.indexOf('absolute')>=0||l.indexOf('beginner')>=0)?'tk-nb-b':'tk-nb-g';
+  }
+
+  function stc(s) {
+    if(s==='beschikbaar') return 'tk-st-g';
+    if(s==='bijna-vol') return 'tk-st-w';
+    if(s==='vol') return 'tk-st-r';
+    return 'tk-st-d';
+  }
+
+  function cta(c) {
+    if(c.beschikbaarheid_status==='vol-begonnen')
+      return '<div class="tk-cta tk-cta-dis">Deze cursus is al begonnen</div>';
+    if(c.beschikbaarheid_status==='vol')
+      return '<div class="tk-wl"><span style="font-size:1.4rem">◷</span><div><div class="tk-wl-t">Deze cursus is vol</div><div class="tk-wl-s">Je kunt je aanmelden voor de wachtlijst</div></div></div>'+
+             '<a href="'+c.formdesk_url+'" target="_blank" class="tk-cta">Aanmelden wachtlijst →</a>';
+    return '<a href="'+c.formdesk_url+'" target="_blank" class="tk-cta">Inschrijven →</a>';
+  }
+
+  function card(c) {
+    var ex = exId===c.cursus_id;
+    var ecl = ex?' ex':'';
+    var vcl = c.beschikbaarheid_status==='vol-begonnen'?' vb':'';
+    var av = c.docent_foto_url?'<img src="'+c.docent_foto_url+'" alt="'+c.docent_volledige_naam+'">':c.docent[0];
+
+    var sp = [
+      {l:'Investering',v:'€'+c.prijs,cl:' tk-pr'},
+      {l:'Lessen',v:c.lessen_aantal+' avonden',cl:''},
+      {l:'Periode',v:c.start_datum+' — '+c.eind_datum,cl:''},
+      {l:'Proefles',v:c.proefles,cl:''}
+    ];
+    if(c.geen_les) sp.push({l:'Geen les',v:c.geen_les,cl:''});
+
+    var sph = sp.map(function(s){
+      return '<div><div class="tk-sl">'+s.l+'</div><div class="tk-sv'+s.cl+'">'+s.v+'</div></div>';
+    }).join('');
+
+    return '<div class="tk-c'+ecl+'" id="tk-'+c.cursus_id+'">'+
+      '<div class="tk-ci'+vcl+'" onclick="tkT(\''+c.cursus_id+'\')">'+
+        '<img src="'+c.cursus_foto_url+'" alt="'+c.titel+'" loading="lazy">'+
+        '<div class="tk-ci-overlay"><h3>'+c.titel+'</h3></div>'+
+        '<span class="tk-nb '+nc(c.niveau)+'">'+c.niveau+'</span>'+
+      '</div>'+
+      '<div class="tk-cb">'+
+        '<p class="tk-desc">'+c.korte_beschrijving+'</p>'+
+        '<div class="tk-chip"><span class="tk-chip-icon">★</span> '+c.docent+' in '+c.locatie+'</div>'+
+        '<div class="tk-meta">'+
+          '<span><span class="tk-mi tk-mi-time">◷</span> '+c.dag_tijd+'</span>'+
+          '<span><span class="tk-mi tk-mi-date">▪</span> '+c.start_datum+'</span>'+
+        '</div>'+
+        '<div class="tk-st '+stc(c.beschikbaarheid_status)+'">'+(si[c.beschikbaarheid_status]||'●')+' '+c.beschikbaarheid+'</div>'+
+        '<div class="tk-div"></div>'+
+        (ex
+          ? '<button class="tk-sluit" onclick="tkT(\''+c.cursus_id+'\')">✕ Sluiten</button>'
+          : '<button class="tk-meer" onclick="tkT(\''+c.cursus_id+'\')">▾ Meer info over deze cursus</button>'
+        )+
+      '</div>'+
+      '<div class="tk-cd">'+
+        '<div class="tk-cdi">'+
+          '<div class="tk-dg">'+
+            '<div class="tk-dl">'+
+              '<h4 class="tk-dh">Over deze cursus</h4>'+
+              '<p class="tk-dt">'+c.lange_beschrijving+'</p>'+
+              '<div class="tk-specs">'+sph+'</div>'+
+            '</div>'+
+            '<div class="tk-dr">'+
+              '<div class="tk-doc">'+
+                '<div class="tk-doc-av">'+av+'</div>'+
+                '<div><h4>'+c.docent_volledige_naam+'</h4><p>'+c.docent_bio+'</p></div>'+
+              '</div>'+
+              '<div class="tk-loc">'+
+                '<div class="tk-loc-l">Locatie</div>'+
+                '<div class="tk-loc-n">'+c.locatie_volledig+'</div>'+
+                '<div class="tk-loc-a">'+c.locatie_adres+'</div>'+
+              '</div>'+
+              cta(c)+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+
+  function render() {
+    var f = gf();
+    var ls={}, ns={};
+    cs.forEach(function(c){ls[c.locatie]=1;ns[c.niveau]=1;});
+    var la=['alle'].concat(Object.keys(ls));
+    var na=['alle'].concat(Object.keys(ns));
+    var hf = fN!=='alle'||fL!=='alle';
+
+    document.getElementById('tkF').innerHTML =
+      '<div class="tk-fg"><div class="tk-fl">Locatie</div><div class="tk-fbs">'+
+        la.map(function(l){return '<button class="tk-fb'+(fL===l?' al':'')+'" onclick="tkSL(\''+l+'\')">'+
+          (l==='alle'?'Alle locaties':l)+'</button>';}).join('')+
+      '</div></div>'+
+      '<div class="tk-fg"><div class="tk-fl">Niveau</div><div class="tk-fbs">'+
+        na.map(function(n){return '<button class="tk-fb'+(fN===n?' an':'')+'" onclick="tkSN(\''+n+'\')">'+
+          (n==='alle'?'Alle niveaus':n)+'</button>';}).join('')+
+        (hf?'<button class="tk-fr" onclick="tkR()">Filters wissen</button>':'')+
+      '</div></div>';
+
+    document.getElementById('tkRC').textContent = f.length+' cursus'+(f.length!==1?'sen':'')+' gevonden';
+
+    if(!f.length) {
+      document.getElementById('tkG').innerHTML = '<div class="tk-empty"><p>Geen cursussen gevonden.</p><button onclick="tkR()">Alle cursussen tonen</button></div>';
+    } else {
+      document.getElementById('tkG').innerHTML = f.map(card).join('');
+    }
+  }
+
+  function renderPlan() {
+    if(!planCs.length) { document.getElementById('tkPlanG').innerHTML = ''; return; }
+    var h = '<div class="tk-section-title"><h2>Nog te plannen cursussen</h2><div class="tk-title-bar"></div></div>';
+    h += '<div class="tk-plan-grid">';
+    planCs.forEach(function(c) {
+      h += '<div class="tk-plan-card">'+
+        (c.cursus_foto_url ? '<img src="'+c.cursus_foto_url+'" alt="'+c.titel+'" loading="lazy">' : '')+
+        '<div class="tk-plan-body">'+
+          '<h3>'+c.titel+'</h3>'+
+          '<p>'+c.korte_beschrijving+'</p>'+
+          '<div class="tk-plan-meta">'+
+            (c.dag_tijd||'')+' · '+(c.docent||'')+' in '+(c.locatie||'')+
+          '</div>'+
+        '</div></div>';
+    });
+    h += '</div>';
+    document.getElementById('tkPlanG').innerHTML = h;
+  }
+
+  window.tkT = function(id) {
+    exId = exId===id?null:id;
+    render();
+    if(exId) setTimeout(function(){
+      var el=document.getElementById('tk-'+id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    },120);
+  };
+  window.tkSL = function(l){fL=l;exId=null;render();};
+  window.tkSN = function(n){fN=n;exId=null;render();};
+  window.tkR = function(){fL='alle';fN='alle';exId=null;render();};
+
+  fetch(API+"/content").then(function(r){return r.json();}).then(function(d){
+    if(d.hero_label) document.getElementById('tkHeroLabel').textContent=d.hero_label;
+    if(d.hero_titel) document.getElementById('tkHeroTitel').textContent=d.hero_titel;
+    if(d.hero_subtitel) document.getElementById('tkHeroSub').textContent=d.hero_subtitel;
+    if(d.quote_tekst) document.getElementById('tkQuote').textContent=d.quote_tekst;
+    if(d.quote_auteur) document.getElementById('tkCite').textContent=d.quote_auteur;
+    if(d.sectie_titel) document.getElementById('tkSecTitel').textContent=d.sectie_titel;
+  }).catch(function(){});
+
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  load();
+})();
+</script>
+
+</body>
+</html>
 
